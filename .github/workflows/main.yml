@@ -1,2 +1,16 @@
+# commments are written using #
+# name field is not necessary
+# if not provided, github displays the whole path name - .github/workflows/main.yml in this case
+name: first github action test learning
+
 on:
   workflow_dispatch:
+
+# job is needed to be provided otherwise the build would show failed with message - No jobs defined in `jobs`
+jobs:
+  # below is a key for job (if it was json)
+  # a job requires either runs-on or uses
+  deploy:
+    runs-on: ubuntu-latest
+    
+
