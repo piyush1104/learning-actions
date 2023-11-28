@@ -14,12 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     # No steps defined in `steps` and no workflow called in `uses` for the following jobs: deploy
     steps:
-      - name: First Step
+      - name: First Step - before checking out
         env :
           TEST_ENV: "test"
         # below is a single line command
-        # run: echo "hi"
-        
+        run: echo "hi"
+      
+        # with cannot be used with run, but rather should be used with uses
+        # with:
+          # first: "hello"
         # below is a multi line command
         # for multi line commands, you cannot add comments in between
         # the readme command should fail as we have not checked the repo yet, indeed it does with below error
@@ -28,6 +31,12 @@ jobs:
           # echo "hello ${TEST_ENV}"
           # echo "$(ls -la)"
           # cat README.md
-    # uses: actions/checkout@v2
+      - name: temporary step - ignore
+        run: |
+          echo $GITHUB_WORKSPACE
+      - name: Second Step - checking out
+        # so run cannot be used with uses
+        # run: echo "hi"
+        uses: actions/checkout@v4
     
 
