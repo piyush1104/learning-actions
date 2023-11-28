@@ -1,0 +1,40 @@
+# commments are written using #
+# name field is not necessary
+# if not provided, github displays the whole path name - .github/workflows/main.yml in this case
+name: third github action test learning
+
+on:
+  workflow_dispatch:
+
+# job is needed to be provided otherwise the build would show failed with message - No jobs defined in `jobs`
+jobs:
+  # below is a key for job (if it was json)
+  # a job requires either runs-on or uses
+  deploy:
+    env:
+      EXAMPLE_ENV: "example"
+    defaults:
+      run:
+        shell: bash
+        working-directory: testing-path
+    runs-on: ubuntu-latest
+    # No steps defined in `steps` and no workflow called in `uses` for the following jobs: deploy
+    steps:      
+      - name: First Step - checking out
+        # so run cannot be used with uses
+        # run: echo "hi"
+        uses: actions/checkout@v4
+        with:
+          # let us see what happens when we provide the path field to it
+          path: "testing-path"
+      - name: Second Step - after checking out
+        run: |
+          echo $EXAMPLE_ENV
+          echo $(pwd)
+          echo $(ls -a)
+      - name: Third Step
+        env:
+          EXAMPLE_ENV: "example2"
+        run: |
+          echo $EXAMPLE_ENV
+    
