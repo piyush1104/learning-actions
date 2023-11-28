@@ -19,7 +19,7 @@ jobs:
           TEST_ENV: "test"
         run: |
           echo "hello ${TEST_ENV}"
-          echo "$(ls)"
+          echo "$(ls -la)"
     # uses: actions/checkout@v2
     
 
