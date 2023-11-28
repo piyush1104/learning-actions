@@ -14,7 +14,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./testing-path
+        working-directory: testing-path
     runs-on: ubuntu-latest
     # No steps defined in `steps` and no workflow called in `uses` for the following jobs: deploy
     steps:      
