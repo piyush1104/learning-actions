@@ -22,11 +22,12 @@ jobs:
         
         # below is a multi line command
         # for multi line commands, you cannot add comments in between
-        # the readme command should fail as we have not checked the repo yet
-        run: |
-          echo "hello ${TEST_ENV}"
-          echo "$(ls -la)"
-          cat README.md
+        # the readme command should fail as we have not checked the repo yet, indeed it does with below error
+        # cat: README.md: No such file or directory
+        # run: |
+          # echo "hello ${TEST_ENV}"
+          # echo "$(ls -la)"
+          # cat README.md
     # uses: actions/checkout@v2
     
 
