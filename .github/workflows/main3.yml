@@ -47,6 +47,7 @@ jobs:
         with:
           repository: piyush1104/repo2
           ref: master
+          path: "testing-path"
       - name: Fifth Step - after checking out second repo
         run:
           echo "$(pwd)"
