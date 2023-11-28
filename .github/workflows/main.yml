@@ -11,6 +11,9 @@ jobs:
   # below is a key for job (if it was json)
   # a job requires either runs-on or uses
   deploy:
+    defaults:
+      run:
+        working-directory: ./testing-path
     runs-on: ubuntu-latest
     # No steps defined in `steps` and no workflow called in `uses` for the following jobs: deploy
     steps:
