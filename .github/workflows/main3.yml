@@ -5,6 +5,11 @@ name: third github action test learning
 
 on:
   workflow_dispatch:
+    inputs:
+      workflow-id:
+        description: "Random workflow id you can pass to know if deployment is completed or not"
+        required: false
+        type: number
 
 # job is needed to be provided otherwise the build would show failed with message - No jobs defined in `jobs`
 jobs:
@@ -37,4 +42,15 @@ jobs:
           EXAMPLE_ENV: "example2"
         run: |
           echo $EXAMPLE_ENV
+      - name: Fourth Step - checking out another repo
+        uses: actions/checkout@v4
+        with:
+          repository: piyush1104/repo2
+          ref: master
+      - name: Fifth Step - after checking out second repo
+        run:
+          echo "$(pwd)"
+          echo "$(ls -a)"
+          echo "hi - ${{ workflow-id }}"
+          
     
