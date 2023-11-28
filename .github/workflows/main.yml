@@ -12,5 +12,13 @@ jobs:
   # a job requires either runs-on or uses
   deploy:
     runs-on: ubuntu-latest
+    # No steps defined in `steps` and no workflow called in `uses` for the following jobs: deploy
+    steps:
+      - name: First Step
+        env :
+          TEST_ENV: "test"
+        run: |
+          echo "hello ${TEST_ENV}"
+    # uses: actions/checkout@v2
     
 
