@@ -51,6 +51,6 @@ jobs:
         run:
           echo "$(pwd)"
           echo "$(ls -a)"
-          echo "hi - ${{ workflow-id }}"
+          echo "hi - ${github.event.inputs.workflow-id}"
           
     
