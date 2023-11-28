@@ -9,7 +9,7 @@ on:
       workflow-id:
         description: "Random workflow id you can pass to know if deployment is completed or not"
         required: false
-        type: number
+        type: string
 
 # job is needed to be provided otherwise the build would show failed with message - No jobs defined in `jobs`
 jobs:
@@ -42,6 +42,15 @@ jobs:
           EXAMPLE_ENV: "example2"
         run: |
           echo $EXAMPLE_ENV
+
+      # the second checkout will overwrite the earlier repo.
+      # /usr/bin/git config --global --add safe.directory /home/runner/work/learning-actions/learning-actions/testing-path
+      # Deleting the contents of '/home/runner/work/learning-actions/learning-actions/testing-path'
+      # if you don't provide path: "testing-path", then it will delete the '/home/runner/work/learning-actions/learning-actions' directory
+      # which will cause below steps doing normal "run" fail with error - 
+      # An error occurred trying to start process '/usr/bin/bash' with working directory '/home/runner/work/learning-actions/learning-actions/testing-path'. No such file or directory
+      # this comes because we have setup our working directory to be "./testing-path" but since second checkout deleted all the contents inside learning-actions, it also deleted testing-path folder
+      # thus causing this error
       - name: Fourth Step - checking out another repo
         uses: actions/checkout@v4
         with:
