@@ -22,10 +22,10 @@ jobs:
         # so run cannot be used with uses
         # run: echo "hi"
         uses: actions/checkout@v4
-        with:
+        # with:
           # let us see what happens when we provide the path field to it
-          path: "testing-path"
-      - name: Third Step - after checking out
+          # path: "testing-path"
+      - name: Second Step - after checking out
         run: |
           echo $(pwd)
           echo $(ls -a)
