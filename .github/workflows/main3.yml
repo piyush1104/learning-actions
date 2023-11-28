@@ -7,10 +7,6 @@ on:
   workflow_dispatch:
     inputs:
       workflow-id:
-        description: "Random workflow id you can pass to know if deployment is completed or not"
-        required: false
-        type: string
-
 # job is needed to be provided otherwise the build would show failed with message - No jobs defined in `jobs`
 jobs:
   # below is a key for job (if it was json)
