@@ -34,9 +34,15 @@ jobs:
       - name: temporary step - ignore
         run: |
           echo $GITHUB_WORKSPACE
+          echo $(pwd)
+          echo $(ls -la)
       - name: Second Step - checking out
         # so run cannot be used with uses
         # run: echo "hi"
         uses: actions/checkout@v4
+      - name: Third Step - after checking out
+        run: |
+          echo $(pwd)
+          echo $(ls -la)
     
 
